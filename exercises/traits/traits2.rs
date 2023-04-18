@@ -11,12 +11,19 @@
 // you can do this!
 // Execute `rustlings hint traits2` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+
 
 trait AppendBar {
     fn append_bar(self) -> Self;
 }
-
+// 不要想着改变传入的这个vec里面的元素, 因为它声明的时候就是不可变的, 所以只能创建新的vec
+impl AppendBar for Vec<String> {
+    fn append_bar(self) -> Self {
+        let mut vec = self.clone();
+        vec.push("Bar".to_string());
+        vec
+    }
+}
 //TODO: Add your code here
 
 #[cfg(test)]
